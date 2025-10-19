@@ -1,0 +1,27 @@
+version: "3.1"
+
+intents:
+  - sapa
+  - tanya_daftar_baju
+  - tanya_harga
+  - tanya_pemesanan
+  - tanya_lokasi
+  - terima_kasih
+
+responses:
+  utter_sapa:
+    - text: "Halo! Saya Asisten Salsabila. Ingin sewa baju adat apa hari ini?"
+  utter_tanya_daftar_baju:
+    - text: "Kami punya berbagai baju adat seperti Kebaya, Beskap, dan Baju Bodo. Mau lihat katalog?"
+  utter_tanya_harga:
+    - text: "Harga sewa mulai dari Rp50.000 hingga Rp350.000 per set."
+  utter_tanya_pemesanan:
+    - text: "Untuk pemesanan, Anda bisa langsung datang ke lokasi kami untuk fitting dan booking, atau bisa juga menghubungi kami via WhatsApp di nomor 0812-3456-7890."
+  utter_tanya_lokasi:
+    - text: "Kami berlokasi di Griya Paes Salsabila, Jombang."
+  utter_terima_kasih:
+    - text: "Sama-sama! Semoga harimu menyenangkan 😊"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,12 @@
+version: "3.1"
+
+stories:
+
+- story: alur tanya katalog
+  steps:
+  - intent: sapa
+  - action: utter_sapa
+  - intent: tanya_daftar_baju
+  - action: utter_tanya_daftar_baju
+  - intent: terima_kasih
+  - action: utter_terima_kasih

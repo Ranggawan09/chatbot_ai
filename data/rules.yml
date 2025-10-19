@@ -1,0 +1,33 @@
+version: "3.1"
+
+rules:
+
+- rule: Ucapkan sapaan
+  steps:
+  - intent: sapa
+  - action: utter_sapa
+
+- rule: Jawab pertanyaan tentang daftar baju
+  steps:
+  - intent: tanya_daftar_baju
+  - action: utter_tanya_daftar_baju
+
+- rule: Jawab pertanyaan tentang harga
+  steps:
+  - intent: tanya_harga
+  - action: utter_tanya_harga
+
+- rule: Jawab pertanyaan tentang lokasi
+  steps:
+  - intent: tanya_lokasi
+  - action: utter_tanya_lokasi
+
+- rule: Jawab pertanyaan tentang cara pemesanan
+  steps:
+  - intent: tanya_pemesanan
+  - action: utter_tanya_pemesanan
+
+- rule: Balas ucapan terima kasih
+  steps:
+  - intent: terima_kasih
+  - action: utter_terima_kasih
