@@ -1,55 +1,67 @@
 version: "3.1"
 
 nlu:
-- intent: sapa
-  examples: |
-    - hai
-    - halo
-    - assalamualaikum
-    - selamat pagi
-    - p
-    - permisi
-    - selamat siang
-    - selamat sore
-    - selamat malam
+  - intent: sapa
+    examples: |
+      - hai
+      - halo
+      - assalamualaikum
+      - selamat pagi
+      - p
+      - permisi
+      - selamat siang
+      - selamat sore
+      - selamat malam
 
-- intent: tanya_daftar_baju
-  examples: |
-    - baju adat apa saja yang tersedia?
-    - jenis pakaian adat yang bisa disewa apa?
-    - saya mau lihat daftar baju adat
-    - ada baju apa aja?
-    - katalognya dong
-    - pilihan bajunya apa saja?
+  - intent: cek_status
+    examples: |
+      - Status pesanan saya apa ya?
+      - Cek status pesanan [411761005486](transaction_id)
+      - Bagaimana status transaksi [331761005486](transaction_id)
+      - Saya ingin tahu status sewa dengan invoice [521761005486](transaction_id)
 
-- intent: tanya_harga
-  examples: |
-    - berapa harga sewa kebaya?
-    - berapa tarif per hari?
-    - kisaran harga sewa baju adat?
-    - harganya berapa?
-    - info harga
-    - pricelistnya berapa?
+  - intent: tanya_lokasi
+    examples: |
+      - alamat tokonya di mana?
+      - di mana lokasi griya paes salsabila?
+      - apakah tokonya di jombang?
+      - lokasinya di mana?
+      - bisa shareloc?
+      - sharelok
 
-- intent: tanya_lokasi
-  examples: |
-    - alamat tokonya di mana?
-    - di mana lokasi griya paes salsabila?
-    - apakah tokonya di jombang?
-    - lokasinya di mana?
-    - bisa shareloc?
-    - sharelok
+  - intent: panduan_sewa
+    examples: |
+      - bagaimana cara pesannya?
+      - cara booking gimana?
+      - prosedur pemesanan seperti apa?
+      - kalau mau sewa gimana caranya?
+      - Bagaimana cara menyewa baju adat?
+      - Cara pemesanan
+      - Langkah-langkah penyewaan
 
-- intent: tanya_pemesanan
-  examples: |
-    - bagaimana cara pesannya?
-    - cara booking gimana?
-    - prosedur pemesanan seperti apa?
-    - kalau mau sewa gimana caranya?
+  - intent: informasi_pembayaran
+    examples: |
+      - Bisakah bayar lewat Midtrans?
+      - Metode pembayaran apa saja?
+      - Apakah bisa transfer bank?
 
-- intent: terima_kasih
-  examples: |
-    - terima kasih
-    - makasih ya
-    - oke, thanks
-    - baik, terima kasih infonya
+  - intent: tanya_jam_operasional
+    examples: |
+      - jam berapa tokonya buka?
+      - buka jam berapa?
+      - tutup jam berapa?
+      - jam operasionalnya kapan saja?
+      - jadwal buka toko
+      - kalian buka sampai jam berapa?
+
+  - intent: terima_kasih
+    examples: |
+      - terima kasih
+      - makasih ya
+      - oke, thanks
+      - baik, terima kasih infonya
+
+  - intent: fallback
+    examples: |
+      - qwerty
+      - asdfgh

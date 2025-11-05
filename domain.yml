@@ -2,25 +2,45 @@ version: "3.1"
 
 intents:
   - sapa
-  - tanya_daftar_baju
-  - tanya_harga
-  - tanya_pemesanan
+  - cek_status
   - tanya_lokasi
+  - panduan_sewa
+  - informasi_pembayaran
+  - tanya_jam_operasional
   - terima_kasih
+  - fallback
+
+entities:
+  - transaction_id
+
+slots:
+  transaction_id:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: transaction_id
 
 responses:
   utter_sapa:
-    - text: "Halo! Saya Asisten Salsabila. Ingin sewa baju adat apa hari ini?"
-  utter_tanya_daftar_baju:
-    - text: "Kami punya berbagai baju adat seperti Kebaya, Beskap, dan Baju Bodo. Mau lihat katalog?"
-  utter_tanya_harga:
-    - text: "Harga sewa mulai dari Rp50.000 hingga Rp350.000 per set."
-  utter_tanya_pemesanan:
-    - text: "Untuk pemesanan, Anda bisa langsung datang ke lokasi kami untuk fitting dan booking, atau bisa juga menghubungi kami via WhatsApp di nomor 0812-3456-7890."
+    - text: "Halo! Saya asisten Adatku. Silahkan tanya seputar penyewaan pakaian adat disini."
+  utter_ask_transaction_id:
+    - text: "Silakan masukkan Invoice / nomor pesanan Anda."
+  utter_panduan_sewa:
+    - text: "Langkah penyewaan:\n1. Pilih pakaian di katalog\n2. Isi formulir data dan tanggal sewa\n3. Lakukan pembayaran (Midtrans atau transfer)\n4. Konfirmasi pembayaran\nJika butuh, ketik 'cek ketersediaan' atau 'cek status'."
+  utter_informasi_pembayaran:
+    - text: "Kami menerima pembayaran melalui bayar di tempat atau transfer (virtual account, e-wallet, kartu)."
   utter_tanya_lokasi:
-    - text: "Kami berlokasi di Griya Paes Salsabila, Jombang."
+    - text: "Jl. Dukuh, Desa Dukuhklopo, Peterongan, Kab. Jombang, Jawa Timur 61481. • Atau bisa kunjungi link berikut: https://maps.app.goo.gl/pMjsa9innKtsnJsm6"
+  utter_tanya_jam_operasional:
+    - text: "#Jam Operasional • Senin - Sabtu: 08:00 - 17:00 • Minggu & Hari Libur: Tutup"
   utter_terima_kasih:
-    - text: "Sama-sama! Semoga harimu menyenangkan 😊"
+    - text: "Terima kasih! Jika ada yang perlu ditanyakan lagi, ketik saja."
+  utter_default:
+    - text: "Maaf, saya belum mengerti. Coba tanya hal lain."
+
+actions:
+  - action_check_status
 
 session_config:
   session_expiration_time: 60

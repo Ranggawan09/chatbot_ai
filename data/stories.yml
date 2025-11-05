@@ -1,12 +1,41 @@
 version: "3.1"
 
 stories:
+  - story: Alur cek status interaktif (pengguna tidak memberikan ID di awal)
+    steps:
+      - intent: cek_status
+      - action: action_check_status
+      - intent: cek_status
+        entities:
+          - transaction_id: "521761005486"
+      - action: action_check_status
 
-- story: alur tanya katalog
-  steps:
-  - intent: sapa
-  - action: utter_sapa
-  - intent: tanya_daftar_baju
-  - action: utter_tanya_daftar_baju
-  - intent: terima_kasih
-  - action: utter_terima_kasih
+  - story: Alur cek status langsung (pengguna memberikan ID di awal)
+    steps:
+      - intent: cek_status
+        entities:
+          - transaction_id: "411761005486"
+      - action: action_check_status
+
+  - story: Alur percakapan lengkap (sapa, tanya panduan, lalu terima kasih)
+    steps:
+      - intent: sapa
+      - action: utter_sapa
+      - intent: panduan_sewa
+      - action: utter_panduan_sewa
+      - intent: terima_kasih
+      - action: utter_terima_kasih
+
+  - story: Alur tanya lokasi dan jam operasional
+    steps:
+      - intent: tanya_lokasi
+      - action: utter_tanya_lokasi
+      - intent: tanya_jam_operasional
+      - action: utter_tanya_jam_operasional
+
+  - story: Alur tanya metode pembayaran
+    steps:
+      - intent: informasi_pembayaran
+      - action: utter_informasi_pembayaran
+      - intent: terima_kasih
+      - action: utter_terima_kasih

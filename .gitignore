@@ -1,0 +1,28 @@
+# Folder environment virtual Python
+venv/
+.venv/
+env/
+.env/
+
+# File bytecode Python
+__pycache__/
+*.pyc
+
+# File yang dihasilkan Rasa selama proses training dan testing
+.rasa/
+results/
+
+# File log
+logs/
+
+# Database tracker (jika menggunakan SQLite)
+*.db
+
+# Konfigurasi IDE
+.idea/
+.vscode/
+
+# File sistem operasi
+.DS_Store
+Thumbs.db
+

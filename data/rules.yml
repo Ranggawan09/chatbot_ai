@@ -1,33 +1,41 @@
 version: "3.1"
 
 rules:
+  - rule: Ucapkan sapaan
+    steps:
+      - intent: sapa
+      - action: utter_sapa
 
-- rule: Ucapkan sapaan
-  steps:
-  - intent: sapa
-  - action: utter_sapa
+  - rule: Handle cek_status intent
+    steps:
+      - intent: cek_status
+      - action: action_check_status
 
-- rule: Jawab pertanyaan tentang daftar baju
-  steps:
-  - intent: tanya_daftar_baju
-  - action: utter_tanya_daftar_baju
+  - rule: Re-run check status after ID is provided
+    # Aturan ini berlaku ketika bot telah meminta transaction_id
+    # dan pengguna kemudian memberikannya, mengisi slot.
+    steps:
+      - action: utter_ask_transaction_id # Bot baru saja meminta ID
+      - slot_was_set:
+          - transaction_id # Pengguna memberikan ID, slot sekarang terisi
+      - action: action_check_status
 
-- rule: Jawab pertanyaan tentang harga
-  steps:
-  - intent: tanya_harga
-  - action: utter_tanya_harga
+  - rule: Jawab pertanyaan tentang lokasi
+    steps:
+      - intent: tanya_lokasi
+      - action: utter_tanya_lokasi
 
-- rule: Jawab pertanyaan tentang lokasi
-  steps:
-  - intent: tanya_lokasi
-  - action: utter_tanya_lokasi
+  - rule: Jawab pertanyaan tentang cara pemesanan
+    steps:
+      - intent: panduan_sewa
+      - action: utter_panduan_sewa
 
-- rule: Jawab pertanyaan tentang cara pemesanan
-  steps:
-  - intent: tanya_pemesanan
-  - action: utter_tanya_pemesanan
+  - rule: Jawab pertanyaan tentang jam operasional
+    steps:
+      - intent: tanya_jam_operasional
+      - action: utter_tanya_jam_operasional
 
-- rule: Balas ucapan terima kasih
-  steps:
-  - intent: terima_kasih
-  - action: utter_terima_kasih
+  - rule: Balas ucapan terima kasih
+    steps:
+      - intent: terima_kasih
+      - action: utter_terima_kasih
