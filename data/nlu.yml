@@ -12,22 +12,80 @@ nlu:
       - selamat siang
       - selamat sore
       - selamat malam
+      - hola
+      - hi
+      - hello
+
+  - intent: cek_ketersediaan
+    examples: |
+      - cek ketersediaan [kebaya jawa](nama_baju)
+      - apakah ada stok [baju bodo](nama_baju)?
+      - masih ada [ulos batak](nama_baju)?
+      - cek stok [kebaya](nama_baju)
+      - ada [pakaian adat jawa](nama_baju)?
+      - ketersediaan [baju adat bali](nama_baju)
+      - stok [pakaian minang](nama_baju) masih ada?
+      - cari [kebaya modern](nama_baju)
+      - ada ga [baju kurung](nama_baju)?
+      - mau cek [pakaian adat sunda](nama_baju)
+      - tersedia ga [kebaya encim](nama_baju)?
+      - cek ketersediaan kebaya
+      - ada stok baju bodo?
+      - cek stok pakaian adat
+      - ketersediaan pakaian
+
+  - intent: rekomendasi_warna
+    examples: |
+      - rekomendasi warna [merah](warna)
+      - ada pakaian warna [putih](warna)?
+      - cari baju warna [hijau](warna)
+      - pakaian warna [kuning](warna) apa aja?
+      - saya mau yang warna [biru](warna)
+      - ada yang warna [hitam](warna)?
+      - rekomendasi [merah](warna) dong
+      - kasih saran pakaian warna [pink](warna)
+      - baju adat warna [coklat](warna)
+      - yang warna [ungu](warna) ada apa?
+      - mau lihat yang warna [emas](warna)
+      - ada ga yang warna [perak](warna)?
+      - rekomendasi berdasarkan warna [orange](warna)
+      - pakaian [abu-abu](warna) ada?
+      - cari yang [krem](warna)
+      - rekomendasi warna merah
+      - ada pakaian warna putih?
+      - kasih saran warna biru
 
   - intent: cek_status
     examples: |
-      - Status pesanan saya apa ya?
-      - Cek status pesanan [411761005486](transaction_id)
-      - Bagaimana status transaksi [331761005486](transaction_id)
-      - Saya ingin tahu status sewa dengan invoice [521761005486](transaction_id)
+      - cek status [411761005486](transaction_id)
+      - status pesanan [521761005486](transaction_id)
+      - bagaimana status [331761005486](transaction_id)?
+      - cek order [411761005486](transaction_id)
+      - nomor pesanan saya [621761005486](transaction_id)
+      - status transaksi [711761005486](transaction_id)
+      - pesanan saya yang [821761005486](transaction_id)
+      - cek reservasi [911761005486](transaction_id)
+      - status booking [101761005486](transaction_id)
+      - order id [111761005486](transaction_id) gimana?
+      - cek status pesanan
+      - status order saya
+      - bagaimana pesanan saya?
+      - cek status booking
 
   - intent: tanya_lokasi
     examples: |
       - alamat tokonya di mana?
-      - di mana lokasi griya paes salsabila?
-      - apakah tokonya di jombang?
+      - di mana lokasi adatku?
       - lokasinya di mana?
       - bisa shareloc?
       - sharelok
+      - dimana alamatnya?
+      - toko ada dimana?
+      - tempatnya dimana?
+      - alamat lengkap
+      - lokasi toko
+      - posisi toko
+      - maps
 
   - intent: panduan_sewa
     examples: |
@@ -35,33 +93,84 @@ nlu:
       - cara booking gimana?
       - prosedur pemesanan seperti apa?
       - kalau mau sewa gimana caranya?
-      - Bagaimana cara menyewa baju adat?
-      - Cara pemesanan
-      - Langkah-langkah penyewaan
+      - bagaimana cara menyewa?
+      - cara pemesanan
+      - langkah-langkah penyewaan
+      - gimana caranya pesan?
+      - cara sewa pakaian adat
+      - panduan booking
+      - tutorial pesan
+      - step by step pemesanan
+
+  - intent: panduan_pengembalian
+    examples: |
+      - bagaimana cara mengembalikan pakaian?
+      - cara pengembalian gimana?
+      - prosedur pengembalian seperti apa?
+      - kalau mau balikin baju gimana caranya?
+      - bagaimana cara return?
+      - cara mengembalikan
+      - langkah-langkah pengembalian
+      - gimana caranya balikin?
+      - cara return pakaian adat
+      - panduan pengembalian
 
   - intent: informasi_pembayaran
     examples: |
-      - Bisakah bayar lewat Midtrans?
-      - Metode pembayaran apa saja?
-      - Apakah bisa transfer bank?
+      - metode pembayaran apa saja?
+      - bisa bayar lewat apa?
+      - pembayarannya gimana?
+      - bisa transfer bank?
+      - terima gopay?
+      - bisa pakai ovo?
+      - metode pembayaran
+      - cara bayar
+      - pembayaran
+      - bayar pakai apa?
+      - terima kartu kredit?
+      - bisa cod?
 
   - intent: tanya_jam_operasional
     examples: |
       - jam berapa tokonya buka?
       - buka jam berapa?
       - tutup jam berapa?
-      - jam operasionalnya kapan saja?
+      - jam operasionalnya kapan?
       - jadwal buka toko
       - kalian buka sampai jam berapa?
+      - jam kerja
+      - kapan buka?
+      - hari apa buka?
+      - minggu buka?
+      - jam operasional
+
+  - intent: batas_sewa
+    examples: |
+      - sewa maksimal berapa hari?
+      - apa ada batas maksimal sewa pakaian?
+      - saya mau sewa baju berapa lama durasinya?
+      - bisa sewa berapa lama?
+      - saya mau sewa baju maksimal berapa hari?
+      - berapa lama boleh sewa?
+      - durasi maksimal sewa berapa lama?
 
   - intent: terima_kasih
     examples: |
       - terima kasih
       - makasih ya
-      - oke, thanks
-      - baik, terima kasih infonya
+      - oke thanks
+      - baik terima kasih infonya
+      - thank you
+      - thanks
+      - oke makasih
+      - sip terima kasih
+      - ok thanks ya
+      - thx
 
   - intent: fallback
     examples: |
       - qwerty
       - asdfgh
+      - xyzabc
+      - 12345
+      - blablabla

@@ -6,20 +6,67 @@ rules:
       - intent: sapa
       - action: utter_sapa
 
-  - rule: Handle cek_status intent
+  # ===== CEK KETERSEDIAAN =====
+  - rule: Handle cek_ketersediaan dengan nama baju
+    steps:
+      - intent: cek_ketersediaan
+        entities:
+          - nama_baju
+      - action: action_check_availability
+
+  - rule: Ask nama_baju if not provided
+    steps:
+      - intent: cek_ketersediaan
+      - action: utter_ask_nama_baju
+
+  - rule: Re-run check availability after nama_baju provided
+    steps:
+      - action: utter_ask_nama_baju
+      - slot_was_set:
+          - nama_baju
+      - action: action_check_availability
+
+  # ===== REKOMENDASI WARNA =====
+  - rule: Handle rekomendasi_warna dengan warna
+    steps:
+      - intent: rekomendasi_warna
+        entities:
+          - warna
+      - action: action_recommend_by_color
+
+  - rule: Ask warna if not provided
+    steps:
+      - intent: rekomendasi_warna
+      - action: utter_ask_warna
+
+  - rule: Re-run recommend by color after warna provided
+    steps:
+      - action: utter_ask_warna
+      - slot_was_set:
+          - warna
+      - action: action_recommend_by_color
+
+  # ===== CEK STATUS =====
+  - rule: Handle cek_status dengan transaction_id
     steps:
       - intent: cek_status
+        entities:
+          - transaction_id
       - action: action_check_status
 
-  - rule: Re-run check status after ID is provided
-    # Aturan ini berlaku ketika bot telah meminta transaction_id
-    # dan pengguna kemudian memberikannya, mengisi slot.
+  - rule: Ask transaction_id if not provided
     steps:
-      - action: utter_ask_transaction_id # Bot baru saja meminta ID
+      - intent: cek_status
+      - action: utter_ask_transaction_id
+
+  - rule: Re-run check status after transaction_id provided
+    steps:
+      - action: utter_ask_transaction_id
       - slot_was_set:
-          - transaction_id # Pengguna memberikan ID, slot sekarang terisi
+          - transaction_id
       - action: action_check_status
 
+  # ===== RULES LAINNYA =====
   - rule: Jawab pertanyaan tentang lokasi
     steps:
       - intent: tanya_lokasi
@@ -30,12 +77,32 @@ rules:
       - intent: panduan_sewa
       - action: utter_panduan_sewa
 
+  - rule: Jawab pertanyaan tentang pengembalian
+    steps:
+      - intent: panduan_pengembalian
+      - action: utter_panduan_pengembalian
+
+  - rule: Jawab pertanyaan tentang pembayaran
+    steps:
+      - intent: informasi_pembayaran
+      - action: utter_informasi_pembayaran
+
   - rule: Jawab pertanyaan tentang jam operasional
     steps:
       - intent: tanya_jam_operasional
       - action: utter_tanya_jam_operasional
 
+  - rule: Jawab pertanyaan tentang batas sewa
+    steps:
+      - intent: batas_sewa
+      - action: utter_batas_sewa
+
   - rule: Balas ucapan terima kasih
     steps:
       - intent: terima_kasih
       - action: utter_terima_kasih
+
+  - rule: Handle fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default

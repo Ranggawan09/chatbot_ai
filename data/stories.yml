@@ -1,41 +1,125 @@
 version: "3.1"
 
 stories:
-  - story: Alur cek status interaktif (pengguna tidak memberikan ID di awal)
+  # ===== CEK KETERSEDIAAN =====
+  - story: Cek ketersediaan dengan nama langsung
     steps:
-      - intent: cek_status
-      - action: action_check_status
-      - intent: cek_status
+      - intent: cek_ketersediaan
         entities:
-          - transaction_id: "521761005486"
-      - action: action_check_status
+          - nama_baju: "kebaya jawa"
+      - action: action_check_availability
 
-  - story: Alur cek status langsung (pengguna memberikan ID di awal)
+  - story: Cek ketersediaan tanpa nama
+    steps:
+      - intent: cek_ketersediaan
+      - action: utter_ask_nama_baju
+      - intent: cek_ketersediaan
+        entities:
+          - nama_baju: "baju bodo"
+      - action: action_check_availability
+
+  # ===== REKOMENDASI WARNA =====
+  - story: Rekomendasi warna langsung
+    steps:
+      - intent: rekomendasi_warna
+        entities:
+          - warna: "merah"
+      - action: action_recommend_by_color
+
+  - story: Rekomendasi warna tanpa warna
+    steps:
+      - intent: rekomendasi_warna
+      - action: utter_ask_warna
+      - intent: rekomendasi_warna
+        entities:
+          - warna: "putih"
+      - action: action_recommend_by_color
+      - intent: cek_ketersediaan
+        entities:
+          - nama_baju: "kebaya encim"
+      - action: action_check_availability
+
+  # ===== CEK STATUS =====
+  - story: Cek status dengan order_id langsung
     steps:
       - intent: cek_status
         entities:
           - transaction_id: "411761005486"
       - action: action_check_status
 
-  - story: Alur percakapan lengkap (sapa, tanya panduan, lalu terima kasih)
+  - story: Cek status tanpa order_id
+    steps:
+      - intent: cek_status
+      - action: utter_ask_transaction_id
+      - intent: cek_status
+        entities:
+          - transaction_id: "521761005486"
+      - action: action_check_status
+
+  # ===== ALUR LENGKAP =====
+  - story: Alur lengkap - sapa, cek warna, cek stok, status
+    steps:
+      - intent: sapa
+      - action: utter_sapa
+      - intent: rekomendasi_warna
+        entities:
+          - warna: "hijau"
+      - action: action_recommend_by_color
+      - intent: cek_ketersediaan
+        entities:
+          - nama_baju: "kebaya jawa"
+      - action: action_check_availability
+      - intent: cek_status
+        entities:
+          - transaction_id: "411761005486"
+      - action: action_check_status
+      - intent: terima_kasih
+      - action: utter_terima_kasih
+
+  - story: Alur panduan dan info
     steps:
       - intent: sapa
       - action: utter_sapa
       - intent: panduan_sewa
       - action: utter_panduan_sewa
-      - intent: terima_kasih
-      - action: utter_terima_kasih
-
-  - story: Alur tanya lokasi dan jam operasional
-    steps:
+      - intent: informasi_pembayaran
+      - action: utter_informasi_pembayaran
       - intent: tanya_lokasi
       - action: utter_tanya_lokasi
       - intent: tanya_jam_operasional
       - action: utter_tanya_jam_operasional
-
-  - story: Alur tanya metode pembayaran
-    steps:
-      - intent: informasi_pembayaran
-      - action: utter_informasi_pembayaran
       - intent: terima_kasih
       - action: utter_terima_kasih
+
+  - story: Alur pencarian dan booking
+    steps:
+      - intent: rekomendasi_warna
+        entities:
+          - warna: "biru"
+      - action: action_recommend_by_color
+      - intent: cek_ketersediaan
+        entities:
+          - nama_baju: "baju kurung"
+      - action: action_check_availability
+      - intent: panduan_sewa
+      - action: utter_panduan_sewa
+      - intent: tanya_lokasi
+      - action: utter_tanya_lokasi
+
+  - story: Alur tanya sewa dan pengembalian
+    steps:
+      - intent: sapa
+      - action: utter_sapa
+      - intent: panduan_sewa
+      - action: utter_panduan_sewa
+      - intent: panduan_pengembalian
+      - action: utter_panduan_pengembalian
+      - intent: terima_kasih
+      - action: utter_terima_kasih
+
+  - story: Handle fallback gracefully
+    steps:
+      - intent: fallback
+      - action: utter_default
+      - intent: sapa
+      - action: utter_sapa

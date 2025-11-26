@@ -2,18 +2,38 @@ version: "3.1"
 
 intents:
   - sapa
+  - cek_ketersediaan
+  - rekomendasi_warna
   - cek_status
   - tanya_lokasi
   - panduan_sewa
   - informasi_pembayaran
+  - panduan_pengembalian
   - tanya_jam_operasional
+  - batas_sewa
   - terima_kasih
   - fallback
 
 entities:
+  - nama_baju
+  - warna
   - transaction_id
 
 slots:
+  nama_baju:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: nama_baju
+
+  warna:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: warna
+
   transaction_id:
     type: text
     influence_conversation: false
@@ -23,23 +43,44 @@ slots:
 
 responses:
   utter_sapa:
-    - text: "Halo! Saya asisten Adatku. Silahkan tanya seputar penyewaan pakaian adat disini."
+    - text: "Halo! 👋 Saya asisten Adatku.\n\nSaya bisa bantu Anda:\n• Cek ketersediaan pakaian\n• Rekomendasi berdasarkan warna\n• Cek status pesanan\n• Info lokasi dan jam operasional\n\nSilakan tanya apa yang Anda butuhkan!"
+
+  utter_ask_nama_baju:
+    - text: "Silakan sebutkan nama pakaian yang ingin Anda cek ketersediaannya.\n\nContoh: Kebaya Jawa, Baju Bodo, Ulos Batak"
+
+  utter_ask_warna:
+    - text: "Warna apa yang Anda cari?\n\nContoh: Merah, Putih, Hijau, Kuning, Biru, Hitam"
+
   utter_ask_transaction_id:
-    - text: "Silakan masukkan Invoice / nomor pesanan Anda."
+    - text: "Silakan masukkan nomor order/invoice Anda.\n\nContoh: 411761005486"
+
+  utter_panduan_pengembalian:
+    - text: "🔄 Prosedur Pengembalian Pakaian:\n\n1️⃣ Pastikan pakaian dalam kondisi baik & lengkap.\n2️⃣ Kemas pakaian dengan rapi.\n\n📍 Alamat Pengembalian:\nJl. Dukuh, Desa Dukuhklopo\nPeterongan, Kab. Jombang\nJawa Timur 61481"
+
   utter_panduan_sewa:
-    - text: "Langkah penyewaan:\n1. Pilih pakaian di katalog\n2. Isi formulir data dan tanggal sewa\n3. Lakukan pembayaran (Midtrans atau transfer)\n4. Konfirmasi pembayaran\nJika butuh, ketik 'cek ketersediaan' atau 'cek status'."
+    - text: "📋 Langkah Penyewaan Pakaian Adat:\n\n1️⃣ Pilih pakaian di katalog website\n2️⃣ Isi formulir data diri dan tanggal sewa\n3️⃣ Pilih metode pembayaran\n4️⃣ Lakukan pembayaran\n5️⃣ Konfirmasi pembayaran\n6️⃣ Tunggu konfirmasi dari admin\n\n💡 Tips:\n• Ketik 'cek ketersediaan [nama]' untuk cek stok\n• Ketik 'rekomendasi warna [warna]' untuk saran pakaian\n• Ketik 'cek status [nomor order]' untuk cek pesanan"
+
   utter_informasi_pembayaran:
-    - text: "Kami menerima pembayaran melalui bayar di tempat atau transfer (virtual account, e-wallet, kartu)."
+    - text: "💳 Metode Pembayaran:\n\n✅ Bayar di Tempat (Cash/Debit)\n✅ Transfer Bank\n✅ Virtual Account\n✅ E-Wallet (GoPay, OVO, Dana, dll)\n✅ Kartu Kredit/Debit\n\n*Pembayaran diproses melalui Midtrans untuk kemudahan dan keamanan transaksi."
+
   utter_tanya_lokasi:
-    - text: "Jl. Dukuh, Desa Dukuhklopo, Peterongan, Kab. Jombang, Jawa Timur 61481. • Atau bisa kunjungi link berikut: https://maps.app.goo.gl/pMjsa9innKtsnJsm6"
+    - text: "📍 Lokasi Adatku:\n\nJl. Dukuh, Desa Dukuhklopo\nPeterongan, Kab. Jombang\nJawa Timur 61481\n\n🗺️ Google Maps:\nhttps://maps.app.goo.gl/pMjsa9innKtsnJsm6"
+
   utter_tanya_jam_operasional:
-    - text: "#Jam Operasional • Senin - Sabtu: 08:00 - 17:00 • Minggu & Hari Libur: Tutup"
+    - text: "🕐 Jam Operasional Adatku:\n\n📅 Senin - Sabtu: 08:00 - 17:00\n📅 Minggu & Hari Libur: Tutup\n\n*Untuk reservasi di luar jam operasional, silakan hubungi admin melalui WhatsApp."
+
+  utter_batas_sewa:
+    - text: "Batas durasi penyewaan pakaian adat maksimal 7 hari 📅"
+
   utter_terima_kasih:
-    - text: "Terima kasih! Jika ada yang perlu ditanyakan lagi, ketik saja."
+    - text: "Terima kasih! 🙏\n\nJika ada yang perlu ditanyakan lagi, silakan chat kapan saja.\n\nSelamat mencoba pakaian adat Indonesia! 🇮🇩"
+
   utter_default:
-    - text: "Maaf, saya belum mengerti. Coba tanya hal lain."
+    - text: "Maaf, saya belum mengerti maksud Anda. 😅\n\nCoba tanyakan:\n• 'cek ketersediaan kebaya'\n• 'rekomendasi warna merah'\n• 'cek status 411761005486'\n• 'lokasi toko'\n• 'jam buka'"
 
 actions:
+  - action_check_availability
+  - action_recommend_by_color
   - action_check_status
 
 session_config:
