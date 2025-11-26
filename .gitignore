@@ -1,8 +1,8 @@
 # Folder environment virtual Python
 venv/
 .venv/
-env/
-.env/
+env
+.env
 
 # File bytecode Python
 __pycache__/
