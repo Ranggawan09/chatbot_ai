@@ -58,10 +58,10 @@ responses:
     - text: "🔄 Prosedur Pengembalian Pakaian:\n\n1️⃣ Pastikan pakaian dalam kondisi baik & lengkap.\n2️⃣ Kemas pakaian dengan rapi.\n\n📍 Alamat Pengembalian:\nJl. Dukuh, Desa Dukuhklopo\nPeterongan, Kab. Jombang\nJawa Timur 61481"
 
   utter_panduan_sewa:
-    - text: "📋 Langkah Penyewaan Pakaian Adat:\n\n1️⃣ Pilih pakaian di katalog website\n2️⃣ Isi formulir data diri dan tanggal sewa\n3️⃣ Pilih metode pembayaran\n4️⃣ Lakukan pembayaran\n5️⃣ Konfirmasi pembayaran\n6️⃣ Tunggu konfirmasi dari admin\n\n💡 Tips:\n• Ketik 'cek ketersediaan [nama]' untuk cek stok\n• Ketik 'rekomendasi warna [warna]' untuk saran pakaian\n• Ketik 'cek status [nomor order]' untuk cek pesanan"
+    - text: "📋 Langkah Penyewaan Pakaian Adat:\n\n1️⃣ Pilih pakaian di katalog website\n2️⃣ Isi formulir data diri dan tanggal sewa\n3️⃣ Pilih metode pembayaran\n4️⃣ Lakukan pembayaran\n5️⃣ Datang ke lokasi untuk mengambil pakaian\n\n💡 Tips:\n• Ketik 'cek ketersediaan [nama]' untuk cek stok\n• Ketik 'rekomendasi warna [warna]' untuk saran pakaian\n• Ketik 'cek status [nomor order]' untuk cek pesanan"
 
   utter_informasi_pembayaran:
-    - text: "💳 Metode Pembayaran:\n\n✅ Bayar di Tempat (Cash/Debit)\n✅ Transfer Bank\n✅ Virtual Account\n✅ E-Wallet (GoPay, OVO, Dana, dll)\n✅ Kartu Kredit/Debit\n\n*Pembayaran diproses melalui Midtrans untuk kemudahan dan keamanan transaksi."
+    - text: "💳 Metode Pembayaran:\n\n✅ Transfer Bank\n✅ Virtual Account\n✅ E-Wallet (GoPay, OVO, Dana, dll)\n✅ Kartu Kredit/Debit\n\n*Pembayaran diproses melalui Midtrans untuk kemudahan dan keamanan transaksi."
 
   utter_tanya_lokasi:
     - text: "📍 Lokasi Adatku:\n\nJl. Dukuh, Desa Dukuhklopo\nPeterongan, Kab. Jombang\nJawa Timur 61481\n\n🗺️ Google Maps:\nhttps://maps.app.goo.gl/pMjsa9innKtsnJsm6"
@@ -73,7 +73,7 @@ responses:
     - text: "Batas durasi penyewaan pakaian adat maksimal 7 hari 📅"
 
   utter_terima_kasih:
-    - text: "Terima kasih! 🙏\n\nJika ada yang perlu ditanyakan lagi, silakan chat kapan saja.\n\nSelamat mencoba pakaian adat Indonesia! 🇮🇩"
+    - text: "Terima kasih! 🙏\n\nJika ada yang perlu ditanyakan lagi, silakan chat kapan saja."
 
   utter_default:
     - text: "Maaf, saya belum mengerti maksud Anda. 😅\n\nCoba tanyakan:\n• 'cek ketersediaan kebaya'\n• 'rekomendasi warna merah'\n• 'cek status 411761005486'\n• 'lokasi toko'\n• 'jam buka'"
